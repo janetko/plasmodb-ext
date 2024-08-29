@@ -1,0 +1,42 @@
+{
+  "name": "PlasmoDB Expander",
+  "version": "1.0.0",
+  "description": "This tool generates a button above the sidebar that allows users to easily expand all sections on an information page for streamlined browsing.",
+  "manifest_version": 3,
+  "author": "Janet Olowe",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "src/pages/index.html",
+    "default_title": "PlasmoDB Expander"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://plasmodb.org/*"
+      ],
+      "js": [
+        "src/public/js/popup.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/pages/index.html",
+        "src/public/js/index.js"
+      ],
+      "matches": [
+        "https://plasmodb.org/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "src/public/js/background.js"
+  }
+}
